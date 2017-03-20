@@ -1,5 +1,6 @@
-import Data.List (nub)
+import Data.List (nub, elemIndex)
 import Data.Ratio
+import Data.Maybe
 import Math.NumberTheory.Primes.Factorisation
 
 main = print "ready"
@@ -50,3 +51,13 @@ isPrime n = all ((/=0).mod n) $ 2:3:[x + i | x <- [6,12..s], i <- [-1,1]]
 
 reduceModN :: (Integral a) => a -> a -> [a]
 reduceModN a n = [a ^ c `mod` n | c <- [1..(n-1)]]
+
+
+
+applyMaybe :: Maybe a -> (a -> Maybe b) -> Maybe b  
+applyMaybe Nothing f  = Nothing  
+applyMaybe (Just x) f = f x 
+
+indicesHelper a n = [ elemIndex x (reduceModN a n) | x <- [1..(n - 1)]] 
+
+indices' a n = [ z `applyMaybe` \x -> Just (x + 1) | z <- indicesHelper a n] 
