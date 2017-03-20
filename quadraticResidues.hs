@@ -1,7 +1,4 @@
-import Data.List (nub, elemIndex)
-import Data.Ratio
-import Data.Maybe
-import Math.NumberTheory.Primes.Factorisation
+import Data.List (nub)
 
 main = print "ready"
 
