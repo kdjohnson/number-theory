@@ -13,8 +13,8 @@ quickSort (x:xs) =
       biggerSorted = quickSort [a | a <- xs, a > x]
   in  smallerSorted ++ [x] ++ biggerSorted
 
-quadraticRoots :: (Integral a) => a -> [a]
-quadraticRoots m = quickSort (nub [ x ^ 2 `mod` m | x <- [1..(m - 1)]]) 
+quadraticResidues :: (Integral a) => a -> [a]
+quadraticResidues m = quickSort (nub [ x ^ 2 `mod` m | x <- [1..(m - 1)]]) 
 
 nonQuadraticResidues :: (Integral a) => a -> [a] -> [a]
 nonQuadraticResidues m xs = [ x | x <- [1..(m-1)], x `notElem` xs] 
